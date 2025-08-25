@@ -1,26 +1,8 @@
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class TestSocialMedia {
     public static void main(String[] args) {
-//        var events = new string[][] {
-//                new string[] { "CONNECT", "Alice", "Bob" },
-//                new string[] { "DISCONNECT", "Bob", "Alice" },
-//                new string[] { "CONNECT", "Alice", "Charlie"},
-//                new string[] { "CONNECT", "Dennis", "Bob" },
-//                new string[] { "CONNECT", "Pam", "Dennis" },
-//                new string[] { "DISCONNECT", "Pam", "Dennis" },
-//                new string[] { "CONNECT", "Pam", "Dennis" },
-//                new string[] { "CONNECT", "Edward", "Bob" },
-//                new string[] { "CONNECT", "Dennis", "Charlie" },
-//                new string[] { "CONNECT", "Alice", "Nicole" },
-//                new string[] { "CONNECT", "Pam", "Edward" },
-//                new string[] { "DISCONNECT", "Dennis", "Charlie" },
-//                new string[] { "CONNECT", "Dennis", "Edward" },
-//                new string[] { "CONNECT", "Charlie", "Bob" }
-//        };
         String[][] events = {
             {"CONNECT", "Alice", "Bob"},
             {"DISCONNECT", "Bob", "Alice"},
@@ -91,27 +73,5 @@ public class TestSocialMedia {
             }
         }
         return List.of(lessThanThreshold, atLeastThreshold);
-    }
-
-    public static void testCountDistictPosts() {
-        // Example usage
-        String[] posts = {
-            "Hello World!",
-            "Java is great.",
-            "I love programming.",
-            "Hello World!",
-            "Java is great."
-        };
-
-        int distinctPosts = countDistinctPosts(posts);
-        System.out.println("Number of distinct posts: " + distinctPosts);
-    }
-
-    public static int countDistinctPosts(String[] posts) {
-        Set<String> uniquePosts = new HashSet<>();
-        for (String post : posts) {
-            uniquePosts.add(post);
-        }
-        return uniquePosts.size();
     }
 }

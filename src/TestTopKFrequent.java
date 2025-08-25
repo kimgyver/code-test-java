@@ -1,9 +1,10 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TestTopKFrequent {
     public List<Integer> getResult(int[] nums, int k) {
-        Map<Integer, Integer> frequencyMap = new java.util.HashMap<>();
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
         for (int num : nums) {
             frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
         }
