@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 public class LogReader {
@@ -57,7 +58,7 @@ public class LogReader {
 
         try {
             SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-            isoFormat.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+            isoFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             Date timestamp = isoFormat.parse(parts[0].trim());
 
             String userId = parts[1].trim();

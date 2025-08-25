@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,15 +41,15 @@ public class TestSocialMedia {
     }
 
     static List<List<String>> socialMediaEvents(String[][] events, int threshold) {
-        Map<String, List<String>> connections = new java.util.HashMap<>();
+        Map<String, List<String>> connections = new HashMap<>();
         for (String[] event : events) {
             String action = event[0];
             String person1 = event[1];
             String person2 = event[2];
 
             if (action.equals("CONNECT")) {
-                connections.putIfAbsent(person1, new java.util.ArrayList<>());
-                connections.putIfAbsent(person2, new java.util.ArrayList<>());
+                connections.putIfAbsent(person1, new ArrayList<>());
+                connections.putIfAbsent(person2, new ArrayList<>());
                 connections.get(person1).add(person2);
                 connections.get(person2).add(person1);
             } else if (action.equals("DISCONNECT")) {
@@ -60,8 +62,8 @@ public class TestSocialMedia {
             }
         }
 
-        List<String> lessThanThreshold = new java.util.ArrayList<>();
-        List<String> atLeastThreshold = new java.util.ArrayList<>();
+        List<String> lessThanThreshold = new ArrayList<>();
+        List<String> atLeastThreshold = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : connections.entrySet()) {
             String person = entry.getKey();
             int connectionCount = entry.getValue().size();
