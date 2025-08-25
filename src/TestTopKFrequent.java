@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TestTopKFrequent {
     public List<Integer> getResult(int[] nums, int k) {
@@ -14,7 +15,16 @@ public class TestTopKFrequent {
                 .sorted(Map.Entry.<Integer, Integer>comparingByValue().reversed())
                 .limit(k)
                 .map(Map.Entry::getKey)
-                .toList();
+                .collect(Collectors.toList());
+//                .toList();
+        // difference b/w .collect(Collectors.toList()) and .toList()
+        // .toList() is available from Java 16 onwards and returns an unmodifiable list
+        // 그 애기는 .collect()를 더 일반적으로 쓸 수 있다는 거네?
+        // .collect(Collectors.toList())는 Java 8부터 사용 가능하며, 반환된 리스트는 수정 가능
+        // 따라서, Java 16 이상을 사용하고 반환된 리스트를 수정할 필요가 없다면 .toList()를 사용하는 것이 더 간단할 수 있습니다.
+        // stream() 메서드는 Java 8부터 도입되었으며, 컬렉션이나 배열에서 스트림을 생성하는 데 사용됩니다.
+
+
     }
 
     public static void main(String[] args) {

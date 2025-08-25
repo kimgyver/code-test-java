@@ -19,7 +19,7 @@ public class LogReader {
     public static class LogSummary
     {
         public int totalRequests;
-        public Map<String, Integer> requestsPerUser;
+        public Map<String, Long> requestsPerUser;
         public String mostHitEndpoint;
         public int mostHitEndpointCount;
         public int failedRequestsCount;
@@ -84,7 +84,10 @@ public class LogReader {
 
         // Group by user ID
         summary.requestsPerUser = logs.stream()
-                .collect(Collectors.groupingBy(log -> log.userId == null ? "" : log.userId, Collectors.summingInt(log -> 1)));
+                .collect(Collectors.groupingBy(log -> log.userId == null ? "" : log.userId, Collectors.counting()));
+
+        // Collectors.summingInt(log -> 1)) vs Collectors.counting()
+        // summingInt returns Integer, counting returns Long
 
         // Find most hit endpoint
         var endpointGroup = logs.stream()
@@ -129,7 +132,7 @@ public class LogReader {
             System.out.println("Total Requests: " + summary.totalRequests);
 
             System.out.println("Requests per User:");
-            for (Map.Entry<String, Integer> user : summary.requestsPerUser.entrySet()) {
+            for (Map.Entry<String, Long> user : summary.requestsPerUser.entrySet()) {
                 System.out.println(user.getKey() + ": " + user.getValue());
             }
 
