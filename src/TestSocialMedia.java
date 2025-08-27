@@ -48,8 +48,12 @@ public class TestSocialMedia {
             String person2 = event[2];
 
             if (action.equals("CONNECT")) {
-                connections.putIfAbsent(person1, new ArrayList<>());
-                connections.putIfAbsent(person2, new ArrayList<>());
+                if (!connections.containsKey(person1)) {
+                    connections.put(person1, new ArrayList<>());
+                }
+                if (!connections.containsKey(person2)) {
+                    connections.put(person2, new ArrayList<>());
+                }
                 connections.get(person1).add(person2);
                 connections.get(person2).add(person1);
             } else if (action.equals("DISCONNECT")) {
